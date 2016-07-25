@@ -27,6 +27,15 @@ limitations under the License.
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
+                        <sort_order translate="label">
+                            <label>ORDEM DE EXIBIÇÃO</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <frontend_class>validate-number</frontend_class>
+                        </sort_order>
                         <comment translate="label">
                             <label></label>
                             <comment>
