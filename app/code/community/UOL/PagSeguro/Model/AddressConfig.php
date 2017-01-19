@@ -81,10 +81,13 @@ class AddressConfig
 
         if (sizeof($broken) == 4) {
             list($address, $number, $complement, $district) = $broken;
+            list($number, $complement) = self::treatmentAddressNumber($number, $complement);
         } elseif (sizeof($broken) == 3) {
             list($address, $number, $complement) = $broken;
+            list($number, $complement) = self::treatmentAddressNumber($number, $complement);
         } elseif (sizeof($broken) == 2 || sizeof($broken) == 1) {
             list($address, $number, $complement) = self::sortData($fullAddress);
+            list($number, $complement) = self::treatmentAddressNumber($number, $complement);
         } else {
             $address = $fullAddress;
         }
@@ -95,5 +98,15 @@ class AddressConfig
             self::endTrim($complement),
             self::endTrim($district)
         );
+    }
+
+    public static function treatmentAddressNumber($number, $complement)
+    {
+        if ($number !== 's/nº') {
+            $complement = trim(preg_replace('/\d/', '', $number)) . " {$complement}";
+            $number = filter_var($number, FILTER_SANITIZE_NUMBER_INT);
+        }
+
+        return array($number, $complement);
     }
 }
