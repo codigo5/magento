@@ -252,7 +252,7 @@ class UOL_PagSeguro_Model_PaymentMethod extends MethodAbstract
 
         $PagSeguroShipping = new PagSeguroShipping();
         $PagSeguroAddress = new PagSeguroAddress();
-        $PagSeguroAddress->setCity($this->shippingData['city']);
+        $PagSeguroAddress->setCity(substr($this->shippingData['city'], 0, 59));
         $PagSeguroAddress->setPostalCode(self::fixPostalCode($this->shippingData['postcode']));
         $PagSeguroAddress->setState($this->shippingData['region']);
         $PagSeguroAddress->setStreet($street);

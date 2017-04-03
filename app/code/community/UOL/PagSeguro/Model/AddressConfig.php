@@ -93,10 +93,10 @@ class AddressConfig
         }
 
         return array(
-            self::endTrim(substr($address, 0, 69)),
-            self::endTrim($number),
-            self::endTrim($complement),
-            self::endTrim($district)
+            self::endTrim(substr($address, 0, 79)),
+            self::endTrim(substr($number, 0, 19)),
+            self::endTrim(substr($complement, 0, 39)),
+            self::endTrim(substr($district, 0, 59))
         );
     }
 
